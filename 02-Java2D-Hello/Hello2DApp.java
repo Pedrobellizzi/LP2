@@ -32,8 +32,8 @@ class Hello2DFrame extends JFrame {
         g2d.drawLine(0,0, w,h);
         g2d.drawLine(0,h, w,0);
         g2d.drawLine(50,50, 50,180);
-	    g2d.drawLine(50,180, 180,180);
-	    g2d.drawLine(180,180, 180,50);
-	    g2d.drawLine(180,50, 50,50);
+	g2d.drawLine(50,180, 180,180);
+	g2d.drawLine(180,180, 180,50);
+	g2d.drawLine(180,50, 50,50);
     }
 }
