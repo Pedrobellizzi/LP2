@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Ellipse2D.Double;
 
-class RectEllipseApp {
+class RectEllipseApp2 {
     public static void main (String[] args) {
         RectEllipseFrame frame = new RectEllipseFrame();
         frame.setVisible(true);
@@ -34,9 +34,9 @@ class RectEllipseFrame extends JFrame {
         super.paint(g);
         this.e1.paint(g);
         Graphics2D gd = (Graphics2D) g;
-        g.setColor(new Color(255,191,0));
+        g.setColor(new Color(173,255,47));
 	gd.fill(new Ellipse2D.Double(100,100, 150,50));
-	g.setColor(new Color(72,61,139));
+	g.setColor(new Color(25,25,22));
         gd.draw(new Ellipse2D.Double(100,100, 150,50));
     }
 }
