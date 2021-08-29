@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class PaintRectApp4 {
+public class PaintRectApp5 {
     public static void main (String[] args) {
         PaintRectFrame frame = new PaintRectFrame();
         frame.setVisible(true);
@@ -26,17 +26,17 @@ class PaintRectFrame extends JFrame {
         this.setSize(400, 400);
         this.setVisible(true);
 	getContentPane().setBackground(Color.white);
-        this.r1 = new Rect(70,120, 50,150);
+        this.r1 = new Rect(100,150, 100,150);
     }
 
     public void paint (Graphics g) {
         super.paint(g);
         this.r1.paint(g);
         Graphics2D g2d = (Graphics2D) g;
-        g.setColor(new Color(255,191,0));
-	g2d.fillRect(70,120, 50,150);
-	g.setColor(new Color(72,61,139));
-        g2d.drawRect(70,120, 50,150);
+        g.setColor(new Color(255,255,0));
+	g2d.fillRect(100,150, 100,150);
+	g.setColor(new Color(0,0,255));
+        g2d.drawRect(100,150, 100,150);
     }
 }
 
