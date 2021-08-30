@@ -33,7 +33,7 @@ class PackFrame extends JFrame {
 	getContentPane().setBackground(Color.white);
         this.r1 = new Rect(50,50, 100,30, 255,255,0, 0,0,255);
         this.e1 = new Ellipse(50,150, 150,50, 173,255,47, 0,71,171);
-        this.t1 = new Triangle(100,150,125,250,300,350, 240,230,140, 128,0,0);
+        this.t1 = new Triangle(100,150,125,250,300,350,240,230,140,128,0,0);
         this.l1 = new Losango(240,310,380,310,180,90,180,270, 237,145,33, 220,20,60);
     }
 
@@ -42,7 +42,7 @@ class PackFrame extends JFrame {
         this.r1.paint(g);
         this.e1.paint(g);
         this.t1.paint(g);
-        this.l1.paint(g);
+        
 
         
     }
