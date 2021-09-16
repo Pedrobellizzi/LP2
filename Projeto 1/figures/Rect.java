@@ -4,21 +4,9 @@ import java.awt.*;
 
 
 public class Rect extends Figure {
-    int x, y;
-    int w, h;
-    int r, g, b, r1, g1, b1;
-
+    
     public Rect (int x, int y, int w, int h, int r, int g, int b, int r1, int g1, int b1) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
-        this.r = r;
-        this.g = g;
-        this.b = b;
-        this.r1 = r1;
-        this.g1 = g1;
-        this.b1 = b1;
+        super(x,y, w,h, r,g,b, r1,g1,b1);        
     }
 
     public void print () {
