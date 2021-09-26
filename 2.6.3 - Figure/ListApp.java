@@ -80,8 +80,8 @@ class ListFrame extends JFrame {
                         figs.add(new Pentagono(x,x2,x3,x4,x5, y,y2,y3,y4,y5, w,h, r,g,b, r1,g1,b1));
                            
                       } else if (evt.getKeyChar() == 'l') {
-                        int r = 255;
-                        int g = 255;
+                        int r = 248;
+                        int g = 248;
                         int b = 255;
                         int r1 = 153;
                         int g1 = 51;
