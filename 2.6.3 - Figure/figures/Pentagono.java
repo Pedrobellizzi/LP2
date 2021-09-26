@@ -3,7 +3,8 @@ package figures;
 import java.awt.*;
 
 public class Pentagono extends Figure {
-    
+    public int x2,x3,x4,x5, y2,y3,y4,y5;
+	
     public Pentagono (int x, int x2, int x3, int x4, int x5, int y, int y2, int y3, int y4, int y5, int w, int h, int r, int g, int b, int r1, int g1, int b1){
         super(x,y, w,h, r,g,b, r1,g1,b1);	
         this.x2 = x+20;
