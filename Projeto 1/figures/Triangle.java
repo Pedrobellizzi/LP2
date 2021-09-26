@@ -3,7 +3,7 @@ package figures;
 import java.awt.*;
 
 public class Triangle extends Figure {
-    
+    public int x2,x3, y2,y3;
 
     public Triangle(int x, int x2, int x3, int y, int y2, int y3, int w, int h, int r, int g, int b, int r1, int g1, int b1){
         super(x,y, w,h, r,g,b, r1,g1,b1);
