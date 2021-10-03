@@ -3,21 +3,11 @@ package figures;
 import java.awt.*;
 
 public class Pentagono extends Figure {
-    public int x2,x3,x4,x5, y2,y3,y4,y5; 
-	
-    public Pentagono (int x, int x2, int x3, int x4, int x5, int y, int y2, int y3, int y4, int y5, int w, int h, int r, int g, int b, int r1, int g1, int b1){
+    public int x1,y1; 
+
+    public Pentagono (int x, int y, int w, int h, int r, int g, int b, int r1, int g1, int b1){
         super(x,y, w,h, r,g,b, r1,g1,b1);	
-        this.x2 = x+20;
-	this.x3 = x+40;
-	this.x4 = x+30;
-        this.x5 = x+10;
-        this.y2 = y-15;
-        this.y3 = y;
-	this.y4 = y+20;
-        this.y5 = y+20;
-	this.w = this.x3 - this.x;
-	this.h = this.y5 - this.y2;
-        
+                
     }
     
     public void print () {
@@ -26,10 +16,12 @@ public class Pentagono extends Figure {
     }
     public void paint (Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
+        int x1[] = {this.x, this.x+30, this.x+60, this.x+45, this.x+15};
+        int y1[] = {this.y, this.y-15, this.y, this.y+35, this.y+35};
         g.setColor(new Color(this.r, this.g, this.b));
-	g2d.fillPolygon(new int[] {this.x, this.x2, this.x3, this.x4, this.x5}, new int[] {this.y, this.y2, this.y3, this.y4, this.y5}, 5);
+	g2d.fillPolygon(x1, y1, 5);
 	g.setColor(new Color(this.r1, this.g1, this.b1));
-        g2d.drawPolygon(new int[] {this.x, this.x2, this.x3, this.x4, this.x5}, new int[] {this.y, this.y2, this.y3, this.y4, this.y5}, 5);
+        g2d.drawPolygon(x1, y1, 5);
     }
 
 }
