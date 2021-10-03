@@ -1,7 +1,8 @@
-
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.event.MouseEvent;
 import javax.swing.*;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -16,6 +17,8 @@ class ListApp {
 
 class ListFrame extends JFrame {
     ArrayList<Figure> figs = new ArrayList<Figure>();
+    Figure focus = null;
+    Point pMouse = null;
     Random rand = new Random();
 
     ListFrame () {
@@ -27,22 +30,35 @@ class ListFrame extends JFrame {
             }
         );
 
+        this.addMouseListener(
+            new MouseAdapter(){
+                public void mousePressed(MouseEvent evt){
+                    pMouse = getMousePosition();
+                    focus = null;
+                    for (Figure fig: figs){ 
+                        if (fig.clicked(pMouse.x,pMouse.y)){
+                            focus = fig;
+                        }
+			if (focus!=null){
+			    figs.add(focus);
+			    figs.remove(focus);			    
+			}
+			repaint();
+                    }
+                }
+            }
+        );
+        
+
         this.addKeyListener (
             new KeyAdapter() {
                 public void keyPressed (KeyEvent evt) {
-                    int x = rand.nextInt(350);
-                    int y = rand.nextInt(350);
-                    int w = rand.nextInt(50);
-                    int h = rand.nextInt(50);
-                    int x2 = rand.nextInt(350);
-                    int x3 = rand.nextInt(350);
-                    int x4 = rand.nextInt(350);
-                    int x5 = rand.nextInt(350);
-                    int y2 = rand.nextInt(350);                       
-                    int y3 = rand.nextInt(350);
-                    int y4 = rand.nextInt(350);
-                    int y5 = rand.nextInt(350);
-                    
+                    pMouse = getMousePosition();
+                    int x = pMouse.x;
+		    int y = pMouse.y;
+                    int w = 60;
+                    int h = 60;
+                                      
                     if (evt.getKeyChar() == 'r') {
                         int r = 255;
                         int g = 255;
@@ -60,15 +76,15 @@ class ListFrame extends JFrame {
                         int g1 = 71;
                         int b1 = 171;
                         figs.add(new Ellipse(x,y, w,h, r,g,b, r1,g1,b1));
-                        
-                    } else if (evt.getKeyChar() == 't') {
+                     
+                     } else if (evt.getKeyChar() == 't') {
                         int r = 240;
                         int g = 230;
                         int b = 140;
                         int r1 = 128;
                         int g1 = 0;
                         int b1 = 0;
-                        figs.add(new Triangle(x,x2,x3, y,y2,y3, w,h, r,g,b, r1,g1,b1));
+                        figs.add(new Triangle(x,y, w,h, r,g,b, r1,g1,b1));
                         
                      } else if (evt.getKeyChar() == 'p') {
                         int r = 237;
@@ -77,22 +93,27 @@ class ListFrame extends JFrame {
                         int r1 = 220;
                         int g1 = 20;
                         int b1 = 60;
-                        figs.add(new Pentagono(x,x2,x3,x4,x5, y,y2,y3,y4,y5, w,h, r,g,b, r1,g1,b1));
+                        figs.add(new Pentagono(x,y, w,h, r,g,b, r1,g1,b1));
                            
-                      } else if (evt.getKeyChar() == 'l') {
+                     } else if (evt.getKeyChar() == 'l') {
                         int r = 248;
                         int g = 248;
                         int b = 255;
                         int r1 = 153;
                         int g1 = 51;
                         int b1 = 153;
-                        figs.add(new Line(x,x2, y,y2, w,h, r,g,b, r1,g1,b1));  
-                      }
-
-                    repaint();
+                        figs.add(new Line(x,y, w,h, r,g,b, r1,g1,b1));  
+                      
+                     } else if(evt.getKeyCode() == 127){
+			figs.remove(focus);
+		     }
+                      
+                     repaint();
                 }
             }
         );
+
+        
 
         this.setTitle("Lista de Figuras");
         this.setSize(450, 450);
