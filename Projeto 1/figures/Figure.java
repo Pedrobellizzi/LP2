@@ -1,6 +1,7 @@
 package figures;
 
 import java.awt.Graphics;
+import java.awt.*;
 
 public abstract class Figure {
 
@@ -21,6 +22,10 @@ public abstract class Figure {
         this.b1 = b1;
     }
 
+    public boolean clicked (int coordX, int coordY) {
+          return (((x <= coordX) && (y <= coordY)) && ((coordX <= (x + w)) && (coordY <= (y + h))));
+    }
 
     public abstract void paint (Graphics g);
+
 }
