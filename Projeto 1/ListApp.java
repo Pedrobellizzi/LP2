@@ -76,7 +76,7 @@ class ListFrame extends JFrame {
                     int x = pMouse.x;
 		    int y = pMouse.y;
                     int w = 60;
-                    int h = 30;
+                    int h = 40;
                                       
                     if (evt.getKeyChar() == 'r') {
                         int r = 255;
