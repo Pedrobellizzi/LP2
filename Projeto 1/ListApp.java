@@ -19,7 +19,7 @@ class ListFrame extends JFrame {
     ArrayList<Figure> figs = new ArrayList<Figure>();
     Figure focus = null;
     Point pMouse = null;
-    Random rand = new Random();
+    int dx,dy;
 
     ListFrame () {
         this.addWindowListener (
@@ -38,17 +38,36 @@ class ListFrame extends JFrame {
                     for (Figure fig: figs){ 
                         if (fig.clicked(pMouse.x,pMouse.y)){
                             focus = fig;
+                            dx = (pMouse.x - focus.x);
+                            dy = (pMouse.y - focus.y);  
                         }
+
 			if (focus!=null){
 			    figs.add(focus);
 			    figs.remove(focus);			    
 			}
-			repaint();
+                        repaint();
                     }
-                }
+
+                 }
             }
         );
         
+       this.addMouseMotionListener(
+            new MouseMotionAdapter() {
+                public void mouseDragged(MouseEvent move) {
+                    pMouse = getMousePosition();
+                    if (focus != null) {
+                        figs.remove(focus);
+                        figs.add(focus);
+                        focus.x = pMouse.x + dx;
+                        focus.y = pMouse.y + dy;
+                    }
+                    repaint();
+                }
+            }
+        );
+
 
         this.addKeyListener (
             new KeyAdapter() {
@@ -67,8 +86,9 @@ class ListFrame extends JFrame {
                         int g1 = 0;
                         int b1 = 255;
                         figs.add(new Rect(x,y, w,h, r,g,b, r1,g1,b1));
-                        
-                    } else if (evt.getKeyChar() == 'e') {
+                    }
+                    
+                    if (evt.getKeyChar() == 'e') {
                         int r = 173;
                         int g = 255;
                         int b = 47;
@@ -76,38 +96,61 @@ class ListFrame extends JFrame {
                         int g1 = 71;
                         int b1 = 171;
                         figs.add(new Ellipse(x,y, w,h, r,g,b, r1,g1,b1));
+                    }
                      
-                     } else if (evt.getKeyChar() == 't') {
+                     if (evt.getKeyChar() == 't') {
                         int r = 240;
                         int g = 230;
                         int b = 140;
                         int r1 = 128;
                         int g1 = 0;
                         int b1 = 0;
-                        figs.add(new Triangle(x,y, w,h, r,g,b, r1,g1,b1));
-                        
-                     } else if (evt.getKeyChar() == 'p') {
+                        figs.add(new Triangle(x,y, w,h, r,g,b, r1,g1,b1));                        
+                     }
+
+                     if (evt.getKeyChar() == 'p') {
                         int r = 237;
                         int g = 145;
                         int b = 33;
                         int r1 = 220;
                         int g1 = 20;
                         int b1 = 60;
-                        figs.add(new Pentagono(x,y, w,h, r,g,b, r1,g1,b1));
-                           
-                     } else if (evt.getKeyChar() == 'l') {
+                        figs.add(new Pentagono(x,y, w,h, r,g,b, r1,g1,b1));                           
+                     } 
+
+                     if (evt.getKeyChar() == 'l') {
                         int r = 248;
                         int g = 248;
                         int b = 255;
                         int r1 = 153;
                         int g1 = 51;
                         int b1 = 153;
-                        figs.add(new Line(x,y, w,h, r,g,b, r1,g1,b1));  
-                      
-                     } else if(evt.getKeyCode() == 127){
+                        figs.add(new Line(x,y, w,h, r,g,b, r1,g1,b1));                        
+                     } 
+
+                     if(evt.getKeyCode() == 127){
 			figs.remove(focus);
-		     }
-                      
+                     }
+
+                     
+                     if(evt.getKeyChar() == 'd'){
+			focus.x += 5;
+                     }
+                     
+                     
+                     if(evt.getKeyChar() == 's'){
+			focus.x -= 5;
+                     }
+                     
+                     if(evt.getKeyChar() == 'c'){
+			focus.y -= 5;
+                     }
+
+                     if(evt.getKeyChar() == 'b'){
+			focus.y += 5;
+                     }
+
+                        
                      repaint();
                 }
             }
