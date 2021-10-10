@@ -20,6 +20,10 @@ class ListFrame extends JFrame {
     Figure focus = null;
     Point pMouse = null;
     int dx,dy;
+    int corcontorno = 0;
+    int cordefundo = 0;
+    Color paleta[] = {Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW, Color.WHITE, Color.BLACK, Color.GRAY, Color.PINK, Color.ORANGE, Color.MAGENTA};
+
 
     ListFrame () {
         this.addWindowListener (
@@ -38,8 +42,8 @@ class ListFrame extends JFrame {
                     for (Figure fig: figs){ 
                         if (fig.clicked(pMouse.x,pMouse.y)){
                             focus = fig;
-                            dx = (pMouse.x - focus.x);
-                            dy = (pMouse.y - focus.y);  
+                            dx = (focus.x - pMouse.x);
+                            dy = (focus.y - pMouse.y);  
                         }
 
 			if (focus!=null){
@@ -75,57 +79,31 @@ class ListFrame extends JFrame {
                     pMouse = getMousePosition();
                     int x = pMouse.x;
 		    int y = pMouse.y;
-                    int w = 60;
-                    int h = 40;
-                                      
+                    int w = 80;
+                    int h = 60;
+                                    
                     if (evt.getKeyChar() == 'r') {
-                        int r = 255;
-                        int g = 255;
-                        int b = 0;
-                        int r1 = 0;
-                        int g1 = 0;
-                        int b1 = 255;
-                        figs.add(new Rect(x,y, w,h, r,g,b, r1,g1,b1));
+                        figs.add(new Rect(x,y, w,h, Color.blue, Color.black));
                     }
                     
                     if (evt.getKeyChar() == 'e') {
-                        int r = 173;
-                        int g = 255;
-                        int b = 47;
-                        int r1 = 0;
-                        int g1 = 71;
-                        int b1 = 171;
-                        figs.add(new Ellipse(x,y, w,h, r,g,b, r1,g1,b1));
+                        figs.add(new Ellipse(x,y, w,h, Color.yellow, Color.black));
+                    
                     }
                      
                      if (evt.getKeyChar() == 't') {
-                        int r = 240;
-                        int g = 230;
-                        int b = 140;
-                        int r1 = 128;
-                        int g1 = 0;
-                        int b1 = 0;
-                        figs.add(new Triangle(x,y, w,h, r,g,b, r1,g1,b1));                        
+                        figs.add(new Triangle(x,y, w,h, Color.green, Color.white));
+                        
                      }
 
                      if (evt.getKeyChar() == 'p') {
-                        int r = 237;
-                        int g = 145;
-                        int b = 33;
-                        int r1 = 220;
-                        int g1 = 20;
-                        int b1 = 60;
-                        figs.add(new Pentagono(x,y, w,h, r,g,b, r1,g1,b1));                           
+                        figs.add(new Pentagono(x,y, w,h, Color.red, Color.black));
+                           
                      } 
 
                      if (evt.getKeyChar() == 'l') {
-                        int r = 248;
-                        int g = 248;
-                        int b = 255;
-                        int r1 = 153;
-                        int g1 = 51;
-                        int b1 = 153;
-                        figs.add(new Line(x,y, w,h, r,g,b, r1,g1,b1));                        
+                        figs.add(new Line(x,y, w,h, Color.white, Color.black));                   
+     
                      } 
 
                      if(evt.getKeyCode() == 127){
@@ -135,30 +113,92 @@ class ListFrame extends JFrame {
                      
                      if(evt.getKeyChar() == 'd'){
 			focus.x += 5;
+                        
                      }
                      
                      
                      if(evt.getKeyChar() == 's'){
 			focus.x -= 5;
+                        
                      }
                      
                      if(evt.getKeyChar() == 'c'){
 			focus.y -= 5;
+                        
                      }
 
                      if(evt.getKeyChar() == 'b'){
 			focus.y += 5;
+                        
                      }
 
                         
                      repaint();
+
+                     if (evt.getKeyChar()=='a'){
+                        focus.w+=10;
+			focus.h+=10;
+                    }
+
+                    if (evt.getKeyChar()=='m'){
+			if (focus.w<=10 || focus.h<=10){
+                        	focus.w-=0;
+				focus.h-=0;
+			}
+			else{
+				focus.w-=5;
+				focus.h-=5;
+			} 
+                    }
+		      
+		    
+		    if (evt.getKeyCode() == 32){
+                        for( Figure fig: figs){
+                            if ((focus == null) || (focus!=null)){
+                                focus=fig;
+                                figs.remove(focus);
+                                figs.add(focus);
+                                break;
+                            }
+                            repaint();
+                            
+
+                        }
+                        
+                    }
+		    if(evt.getKeyChar() == 'v'){
+                       if (corcontorno == 9){
+                           corcontorno = 0;
+                       }
+                       else {
+                           corcontorno++;
+                       }
+                       focus.contorno = paleta[corcontorno];
+
+                   }
+		   repaint();
+
+                   if (evt.getKeyChar() == 'f'){
+                       if (cordefundo == 9){
+                           cordefundo = 0;
+                       }
+                       else {
+                           cordefundo++;
+                       }
+                       focus.fundo = paleta[cordefundo];
+
+                   }
+                   repaint();
+
+
+
                 }
             }
         );
 
         
 
-        this.setTitle("Lista de Figuras");
+        this.setTitle("Projeto de Figuras 1");
         this.setSize(450, 450);
         this.setVisible(true);
 	getContentPane().setBackground(Color.white);
