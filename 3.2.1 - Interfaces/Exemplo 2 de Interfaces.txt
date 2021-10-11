@@ -1,0 +1,47 @@
+
+Exemplo 2:
+
+Objetos:  Casa;  Apartamento;  Terreno
+
+Métodos: 
+1) Calcula o valor de venda de mercado por m2 de cada objeto.
+2) Calcula o valor do aluguel por m2 de cada objeto.
+
+
+interface mercado {
+   int vendam2 (int valormercado, int area);
+   int aluguel (int valormercado);
+}
+
+class Casa implements mercado {
+   int vendam2 (int valormercado, int area) {
+       return (valormercado / area);
+   }
+
+   int aluguel (int valormercado) {
+       return (valormercado * 0,005);
+   }
+}
+
+
+class Apartamento implements mercado {
+   int vendam2 (int valormercado, int area) {
+       return (valormercado / area);
+   }
+
+   int aluguel (int valormercado) {
+       return (valormercado * 0,005);
+   }
+}
+
+
+class Terreno implements mercado {
+   int vendam2 (int valormercado, int area) {
+       return (valormercado / area);
+   }
+
+   int aluguel (int valormercado) {
+       return (valormercado * 0,005);
+   }
+}
+
