@@ -22,7 +22,7 @@ class ListFrame extends JFrame {
     int dx,dy;
     int corcontorno = 0;
     int cordefundo = 0;
-    Color paleta[] = {Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW, Color.WHITE, Color.BLACK, Color.GRAY, Color.PINK, Color.ORANGE, Color.MAGENTA};
+    Color cores[] = {Color.BLUE, Color.BLACK, Color.CYAN, Color.RED, Color.GREEN, Color.YELLOW, Color.WHITE, Color.GRAY, Color.PINK, Color.ORANGE, Color.MAGENTA};
 
 
     ListFrame () {
@@ -45,14 +45,12 @@ class ListFrame extends JFrame {
                             dx = (focus.x - pMouse.x);
                             dy = (focus.y - pMouse.y);  
                         }
-
-			if (focus!=null){
-			    figs.add(focus);
-			    figs.remove(focus);			    
-			}
-                        repaint();
-                    }
-
+                     }
+		     if (focus!=null){
+			figs.remove(focus);	
+                        figs.add(focus);  		    
+		     }
+                     repaint();
                  }
             }
         );
@@ -88,51 +86,40 @@ class ListFrame extends JFrame {
                     
                     if (evt.getKeyChar() == 'e') {
                         figs.add(new Ellipse(x,y, w,h, Color.yellow, Color.black));
-                    
                     }
                      
                      if (evt.getKeyChar() == 't') {
                         figs.add(new Triangle(x,y, w,h, Color.green, Color.white));
-                        
                      }
 
                      if (evt.getKeyChar() == 'p') {
                         figs.add(new Pentagono(x,y, w,h, Color.red, Color.black));
-                           
                      } 
 
                      if (evt.getKeyChar() == 'l') {
                         figs.add(new Line(x,y, w,h, Color.white, Color.black));                   
-     
                      } 
 
                      if(evt.getKeyCode() == 127){
 			figs.remove(focus);
                      }
-
                      
                      if(evt.getKeyChar() == 'd'){
 			focus.x += 5;
-                        
                      }
-                     
-                     
+                                          
                      if(evt.getKeyChar() == 's'){
 			focus.x -= 5;
-                        
                      }
                      
                      if(evt.getKeyChar() == 'c'){
 			focus.y -= 5;
-                        
                      }
 
                      if(evt.getKeyChar() == 'b'){
 			focus.y += 5;
-                        
                      }
 
-                        
                      repaint();
 
                      if (evt.getKeyChar()=='a'){
@@ -151,7 +138,6 @@ class ListFrame extends JFrame {
 			} 
                     }
 		      
-		    
 		    if (evt.getKeyCode() == 32){
                         for( Figure fig: figs){
                             if ((focus == null) || (focus!=null)){
@@ -161,37 +147,31 @@ class ListFrame extends JFrame {
                                 break;
                             }
                             repaint();
-                            
-
-                        }
-                        
+                        }                  
                     }
 		    if(evt.getKeyChar() == 'v'){
-                       if (corcontorno == 9){
+                       if (corcontorno == 10){
                            corcontorno = 0;
                        }
                        else {
                            corcontorno++;
                        }
-                       focus.contorno = paleta[corcontorno];
+                       focus.contorno = cores[corcontorno];
 
                    }
 		   repaint();
 
                    if (evt.getKeyChar() == 'f'){
-                       if (cordefundo == 9){
+                       if (cordefundo == 10){
                            cordefundo = 0;
                        }
                        else {
                            cordefundo++;
                        }
-                       focus.fundo = paleta[cordefundo];
+                       focus.fundo = cores[cordefundo];
 
                    }
                    repaint();
-
-
-
                 }
             }
         );
@@ -207,6 +187,11 @@ class ListFrame extends JFrame {
     public void paint (Graphics g) {
         super.paint(g);
         for (Figure fig: this.figs) {
+            if(focus==fig){
+		    Graphics2D g2d = (Graphics2D) g;
+                    g2d.setColor(new Color(0,0,0));
+                    g2d.drawRect(focus.x-2,focus.y-2,focus.w+2,focus.h+2);
+            }
             fig.paint(g);
         }
     }
