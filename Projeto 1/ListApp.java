@@ -37,18 +37,20 @@ class ListFrame extends JFrame {
         this.addMouseListener(
             new MouseAdapter(){
                 public void mousePressed(MouseEvent evt){
-                    pMouse = getMousePosition();
+                    int x = evt.getX();
+                    int y = evt.getY();
                     focus = null;
                     for (Figure fig: figs){ 
-                        if (fig.clicked(pMouse.x,pMouse.y)){
+                        if (fig.clicked(x,y)){
                             focus = fig;
-                            dx = (focus.x - pMouse.x);
-                            dy = (focus.y - pMouse.y);  
+                            dx = (focus.x - x);
+                            dy = (focus.y - y);  
                         }
                      }
 		     if (focus!=null){
 			figs.remove(focus);	
-                        figs.add(focus);  		    
+                        figs.add(focus);
+                        focus.contorno = Color.red;  		    
 		     }
                      repaint();
                  }
@@ -60,8 +62,6 @@ class ListFrame extends JFrame {
                 public void mouseDragged(MouseEvent move) {
                     pMouse = getMousePosition();
                     if (focus != null) {
-                        figs.remove(focus);
-                        figs.add(focus);
                         focus.x = pMouse.x + dx;
                         focus.y = pMouse.y + dy;
                     }
@@ -81,19 +81,19 @@ class ListFrame extends JFrame {
                     int h = 60;
                                     
                     if (evt.getKeyChar() == 'r') {
-                        figs.add(new Rect(x,y, w,h, Color.blue, Color.black));
+                        figs.add(new Rect(x,y, w,h, Color.white, Color.black));
                     }
                     
                     if (evt.getKeyChar() == 'e') {
-                        figs.add(new Ellipse(x,y, w,h, Color.yellow, Color.black));
+                        figs.add(new Ellipse(x,y, w,h, Color.white, Color.black));
                     }
                      
                      if (evt.getKeyChar() == 't') {
-                        figs.add(new Triangle(x,y, w,h, Color.green, Color.white));
+                        figs.add(new Triangle(x,y, w,h, Color.white, Color.black));
                      }
 
                      if (evt.getKeyChar() == 'p') {
-                        figs.add(new Pentagono(x,y, w,h, Color.red, Color.black));
+                        figs.add(new Pentagono(x,y, w,h, Color.white, Color.black));
                      } 
 
                      if (evt.getKeyChar() == 'l') {
@@ -144,6 +144,7 @@ class ListFrame extends JFrame {
                                 focus=fig;
                                 figs.remove(focus);
                                 figs.add(focus);
+                                focus.contorno = Color.red;
                                 break;
                             }
                             repaint();
@@ -186,12 +187,11 @@ class ListFrame extends JFrame {
 
     public void paint (Graphics g) {
         super.paint(g);
-        for (Figure fig: this.figs) {
-            if(focus==fig){
-		    Graphics2D g2d = (Graphics2D) g;
-                    g2d.setColor(new Color(0,0,0));
-                    g2d.drawRect(focus.x-2,focus.y-2,focus.w+2,focus.h+2);
+        for (Figure fig: this.figs) {            
+            if(fig!=focus){
+		fig.contorno = Color.black;
             }
+
             fig.paint(g);
         }
     }
