@@ -17,6 +17,6 @@ public class Line extends Figure{
     public void paint (Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g.setColor(this.contorno);
-        g2d.drawLine(this.x,this.y, this.x + w, this.y + h);
+        g2d.drawLine(this.x,this.y, this.x + w, this.y + (h/2));
     }
 }
