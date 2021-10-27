@@ -1,9 +1,11 @@
 package figures;
 
+import ivisibile.IVisibile;
+
 import java.awt.Graphics;
 import java.awt.*;
 
-public abstract class Figure {
+public abstract class Figure implements IVisibile {
 
     public int x, y;
     public int w, h;
@@ -20,11 +22,15 @@ public abstract class Figure {
         this.contorno = contorno;
     }
 
-    public boolean clicked (int coordX, int coordY) {
-          return (((x <= coordX) && (y <= coordY)) && ((coordX <= (x + w)) && (coordY <= (y + h))));
+    public void drag (int dx, int dy) {
+        this.x += dx;
+        this.y += dy;
+    } 
+
+    public boolean clicked (int x, int y) {
+          return (this.x<=x && x<=this.x+this.w && this.y<=y && y<=this.y+this.h);
     }
 
-
-    public abstract void paint (Graphics g);
-
+    
+   
 }
