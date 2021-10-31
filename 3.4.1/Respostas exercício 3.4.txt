@@ -1,0 +1,88 @@
+
+
+1. Classe Abstrata: Pagamento 
+a. - Caso: Programa para fazer pagamentos de 3 formas pix, cartão e boleto
+b. - Justificativa: Reduzir os códigos nas diferentes classes de pagamento, já que um pagamento possui propriedades similares.
+c. e d. - Esboço do código completo e exemplos das classes que a implementam:
+
+
+Class ProgramaPagamento
+         public static void main (String[] args) {
+                Console.WriteLine(“PagamentoBase”)
+                       var pagamento = new Pagamento();
+         }
+
+Public abstract class Pagamento {
+        public DateTime Vencimento { get;set;} 
+        public decimal Valor  {get; set;}
+        public virtual void Pagar (decimal valor)
+        {
+               Console.WriteLine(“PagamentoBase”);
+         }
+
+
+Public class PagamentoViaPix: Pagamento {
+          Public overrride void Pagar (decimal valor);
+          {
+                  base.Pagar(250);
+           }
+}
+
+
+Public class PagamentoViaCartao: Pagamento {
+          Public overrride void Pagar (decimal valor);
+          {
+                  base.Pagar(250);
+           }
+}
+
+Public class PagamentoViaBoleto: Pagamento {
+          Public override void Pagar (decimal valor);
+          {
+                   base.Pagar(100);
+           }
+}
+
+
+
+
+
+  
+
+1. Interface: Atualizar 
+a. - Caso: Programa para atualizar um cadastro de clientes e fornecedores com as funções alterar e salvar; remover; e incluir os dados de um cliente.
+b. - Justificativa: Concentrar os métodos comuns de atualização de um cadastro de clientes e fornecedores que possui funcionalidades comuns para as diversas classes.
+c. - Esboço do código:
+
+
+public interface IVisibile {
+    public boolean clicked (int x, int y);
+    public void    paint   (Graphics g, boolean focused);
+}
+
+public interface IAtualizar {
+       public boolean save(){
+             return false;
+             }
+       public boolean update(){
+             return false;
+             }
+       public boolean remove(){
+             return false;
+             }
+       public boolean find(){
+             return null;
+             }
+
+
+d. - Exemplos das classes que a implementam:
+
+1)	Classe para inserir um cliente novo;
+2)	Classe para inserir um fornecedor novo;
+3)	Classe para excluir um cliente novo;
+4)	Classe para excluir um fornecedor novo;
+5)	Classe para alterar os dados de um cliente existente;
+6)	Classe para alterar os dados de um fornecedor existente;
+7)	Todas as funcionalidades acima para outros tipos classes que se desejar incluir no cadastro: clientes especiais, fornecedores autônomos, empresas, etc. 
+
+
