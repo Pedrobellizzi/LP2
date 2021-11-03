@@ -14,9 +14,17 @@ public class Line extends Figure{
             this.w, this.x, this.y);
     }
 
-    public void paint (Graphics g) {
+    public void paint (Graphics g, boolean focused) {
         Graphics2D g2d = (Graphics2D) g;
+
         g.setColor(this.contorno);
         g2d.drawLine(this.x,this.y, this.x + w, this.y + (h/2));
+
+        if (focused) {
+            g2d.setPaint(Color.RED);
+            g2d.drawRect(this.x,this.y, this.w, this.h/2);
+            
+        }
+
     }
 }

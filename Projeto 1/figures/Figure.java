@@ -1,17 +1,18 @@
 package figures;
 
+import java.io.Serializable;
 import ivisibile.IVisibile;
 
 import java.awt.Graphics;
 import java.awt.*;
 
-public abstract class Figure implements IVisibile {
+public abstract class Figure implements IVisibile, Serializable {
 
     public int x, y;
     public int w, h;
     public Color fundo;
     public Color contorno;
-   
+    public boolean focused;
     
     public Figure (int x, int y, int w, int h, Color fundo, Color contorno) {
         this.x = x;
@@ -30,7 +31,6 @@ public abstract class Figure implements IVisibile {
     public boolean clicked (int x, int y) {
           return (this.x<=x && x<=this.x+this.w && this.y<=y && y<=this.y+this.h);
     }
-
-    
+   
    
 }
