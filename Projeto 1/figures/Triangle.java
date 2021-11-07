@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Triangle extends Figure {
     
-    public int x1,y1,x2,y2;
+    private int x1,y1,x2,y2;
 
     public Triangle(int x, int y, int w, int h, Color fundo, Color contorno){
         super(x,y, w,h, fundo, contorno);
