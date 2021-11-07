@@ -18,20 +18,19 @@ class ListApp {
 }
 
 class ListFrame extends JFrame {
-    ArrayList<Figure> figs = new ArrayList<Figure>();
-    ArrayList<Button> buts = new ArrayList<Button>();
+    private ArrayList<Figure> figs = new ArrayList<Figure>();
+    private ArrayList<Button> buts = new ArrayList<Button>();
+    private int dx,dy;
+    private int x,y, w,h;
+    private Color cores[] = {Color.BLUE, Color.BLACK, Color.CYAN, Color.RED, Color.GREEN, Color.YELLOW, Color.WHITE, Color.GRAY, Color.PINK, Color.ORANGE, Color.MAGENTA};
+    private static int SPC = 20;
+    private static int DIM = 40;
     Figure focus = null;
     Button fobut = null;
     Point pMouse = null;
-    int dx,dy;
-    int x,y, w,h;
     boolean focused;
     int corcontorno = 0;
     int cordefundo = 0;
-    Color cores[] = {Color.BLUE, Color.BLACK, Color.CYAN, Color.RED, Color.GREEN, Color.YELLOW, Color.WHITE, Color.GRAY, Color.PINK, Color.ORANGE, Color.MAGENTA};
-    static int SPC = 20;
-    static int DIM = 40;
-
 
 
     @SuppressWarnings("unchecked") 
@@ -256,15 +255,12 @@ class ListFrame extends JFrame {
                  }
              }
         );
-
-        
+       
 
         this.setTitle("Projeto de Figuras 1");
         this.setSize(450, 450);
         this.setVisible(true);
 	getContentPane().setBackground(Color.white);
-
-               
         
     }
 
@@ -274,32 +270,14 @@ class ListFrame extends JFrame {
             if(fig==focus){
 		fig.paint(g, true);
             }
-
             fig.paint(g, false);
         }
 
         for (Button but: this.buts) {            
-                     
             but.paint(g, but==fobut);
-            
-//            if(but==fobut){
-//		but.paint(g, true);
-//            }
-            
         }
 
 
     }
 }
 
-
-
-//  dx = (focus.x - x);
-//                                  dy = (focus.y - y);  
-
-
-
-// if (focus != null) {
-//                         focus.x = pMouse.x + dx;
-//                         focus.y = pMouse.y + dy;
-//                     }
