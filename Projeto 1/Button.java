@@ -7,8 +7,8 @@ public class Button implements IVisibile {
     static int DIM = 40;
     static int PAD = 4;
 
-    public  int x,y, w,h;
-    public  int    idx;
+    private  int x,y, w,h;
+    protected  int    idx;
     private Figure fig;
 
     public Button (int idx, Figure fig) {
@@ -46,20 +46,3 @@ public class Button implements IVisibile {
 
     }
 }
-
-
-// return (SPC<=x && x<=SPC+DIM && SPC+this.idx*DIM<=y && y<=SPC+this.idx*DIM+DIM);
-
-//   g2d.setColor(focused ? Color.GRAY : Color.LIGHT_GRAY);
-//        g2d.fillRect(SPC, SPC+this.idx*DIM, DIM, DIM);
-
-// g2d.setPaint(Color.LIGHT_GRAY);
-//        g2d.fillRect(SPC, SPC+this.idx*DIM, DIM, DIM);
-
-//        if (focused) {
-//             g2d.setPaint(Color.green);
-//             g2d.fillRect(SPC, SPC+this.idx*DIM, DIM, DIM);
-//        }
-// LIGHT_GRAY
-
-// this.fig.paint(g, false);
