@@ -1,0 +1,28 @@
+
+Modificadores de acesso:
+
+Classe Triangle: acesso "private" nas declarações de variáveis "int x1, y1, x2, y2" porque são variáveis exclusivas para construção do triângulo, devem ser privativas e não ser acessadas por outras classes.
+
+Classe Pentagono: acesso "private" nas declarações de variáveis "int x1, y1, x2, y2" porque são variáveis exclusivas para construção do pentagono, devem ser privativas e não ser acessadas por outras classes.
+
+Classe Button: acesso "protected" na declaração da variável "int idx" porque é uma variável exclusiva para enumerar os Botões e precisa ser acessada pela Classe principal. 
+
+Classe Button: acesso "private" na declaração de "Figure fig" porque possui figuras que devem ser privativas desta aplicação e não ser acessadas por outras classes.
+
+Classe LisApp: acesso "private" nas declarações iniciais abaixo porque possuem valores e figuras que devem ser privativas desta apliacação e não ser acessadas por outras classes.
+    private ArrayList<Figure> figs = new ArrayList<Figure>();
+    private ArrayList<Button> buts = new ArrayList<Button>();
+    private int dx,dy;
+    private int x,y, w,h;
+    private Color cores[] = {Color.BLUE, Color.BLACK, Color.CYAN, Color.RED, Color.GREEN, Color.YELLOW, Color.WHITE, Color.GRAY, Color.PINK, Color.ORANGE, Color.MAGENTA};
+    private static int SPC = 20;
+    private static int DIM = 40;
+
+Classe LisApp: acesso "nenhum" nas declarações iniciais abaixo porque não possuem valores e somente estão incializando variáveis.
+    Figure focus = null;
+    Button fobut = null;
+    Point pMouse = null;
+    boolean focused;
+    int corcontorno = 0;
+    int cordefundo = 0;
+    
