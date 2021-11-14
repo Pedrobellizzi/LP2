@@ -54,17 +54,23 @@
 >**Letra 'b'** - Baixo.
 >
 >
-### **Remover uma figura criada na tela:** Selecionar e colocar em foco a figura desejada e clicar na tecla **'Delete'** do teclado.
+### **Remover uma figura criada na tela:** 
+>Selecionar e colocar em foco a figura desejada e clicar na tecla **'Delete'** do teclado.
 >
-### **Aumentar o tamanho de uma figura criada na tela:** Selecionar e colocar em foco a figura desejada e clicar na **letra "a"** do teclado
+### **Aumentar o tamanho de uma figura criada na tela:**
+>Selecionar e colocar em foco a figura desejada e clicar na **letra "a"** do teclado
 >
-### **Diminuir o tamanho de uma figura criada na tela:** Selecionar e colcocar em foco a figura desejada e clicar na **letra "m"** do teclado
+### **Diminuir o tamanho de uma figura criada na tela:** 
+>Selecionar e colcocar em foco a figura desejada e clicar na **letra "m"** do teclado
 >
-### **Alterar a cor de fundo de uma figura criada na tela:** Selecionar e colcocar em foco a figura desejada e clicar sucessivamente na **letra "f"** do teclado, até chegar na cor desejada. 
+### **Alterar a cor de fundo de uma figura criada na tela:**
+>Selecionar e colcocar em foco a figura desejada e clicar sucessivamente na **letra "f"** do teclado, até chegar na cor desejada. 
 >
-### **Alterar a cor de contorno de uma figura criada na tela:** Selecionar e colocar em foco a figura desejada e clicar sucessivamente na **letra "v"** do teclado, até chegar na cor desejada. 
+### **Alterar a cor de contorno de uma figura criada na tela:**
+>Selecionar e colocar em foco a figura desejada e clicar sucessivamente na **letra "v"** do teclado, até chegar na cor desejada. 
 >
-### **Recuperar as últimas figuras criadas e alteradas após fechar o aplicativo:** O aplicativo grava automaticamente num arquivo específico .bin a última tela que foi criada e alterada após o encerramento da sua utilização. Na próxima abertura do aplicativo a tela que foi encerrada abre automaticamente com as figuras na mesma posição.
+### **Recuperar as últimas figuras criadas e alteradas após fechar o aplicativo:**
+>O aplicativo grava automaticamente num arquivo específico .bin a última tela que foi criada e alterada após o encerramento da sua utilização. Na próxima abertura do aplicativo a tela que foi encerrada abre automaticamente com as figuras na mesma posição.
 
 
 
