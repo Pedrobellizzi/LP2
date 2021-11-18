@@ -8,7 +8,7 @@ public class LinkedStack implements IStackable {
        int sz1 = 0;
        
        public void push(int v){
-             s1.add(v);
+             s1.addFirst(v);
              sz1++;
        }
 
